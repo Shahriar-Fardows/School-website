@@ -1,17 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "../Root";
+import { lazy, Suspense } from "react";
 import ErrorPage from "../Error/ErrorPage";
 import Home from "../Home/Home";
+import LoadingSpinner from "../Shared/LoadingSpinner";
+
+// Define the wait function
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Dynamically import the Root component
+const Root = lazy(() => wait(3000).then(() => import("../Root")));
 
 const Routers = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <Root />
+          </Suspense>
+        ),
         errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: (
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <Home />
+                  </Suspense>
+                ),
             },
         ],
     },

@@ -1,11 +1,10 @@
+import logo from "./Images/logo.png";
 
 const images = {
-    image: {
-
-    },
-    svg: {
-
-    }
+  image: {
+    logo,
+  },
+  svg: {},
 };
 
 export default images;
