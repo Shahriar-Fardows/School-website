@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet"; // Updated import statement
 
 /**
  * SEO hook for managing SEO tags in a React application
