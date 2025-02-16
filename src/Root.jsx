@@ -3,8 +3,10 @@ import Navbar from "./Shared/Navbar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="relative ">
+            <div className="sticky top-0 z-50">
             <Navbar/>
+            </div>
             <Outlet/>
         </div>
     );
